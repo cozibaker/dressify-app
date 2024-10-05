@@ -22,17 +22,13 @@ def create_database():
     '''
 
 def add_clothing(owner, image, category, subtype, colour, occasion):
-    cur.execute("""
-        INSERT INTO clothes VALUE
+    db = database_worker("dressify.db")
+    db.runsave(""" INSERT INTO clothes VALUES
             (owner, image, category, subtype, colour, occasion)
-    """)
+               """)
     
 @app.route('/file/<filename>')
 def file(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
 
 create_database()
-
-db = create_database()
-
-cur = db.cursor()
