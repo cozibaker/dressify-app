@@ -11,20 +11,20 @@ def create_database():
     )'''
     query_clothing = '''CREATE table if not exists clothing (
         id INTEGER PRIMARY KEY,
-        owner TEXT,
         image VARCHAR(100),
         category TEXT,
         subtype TEXT,
         colour TEXT,
         occasion TEXT,
+        user_id INTEGER,
         FOREIGN KEY (user_id) REFERENCES user(id) on delete cascade
     )
     '''
 
-def add_clothing(owner, image, category, subtype, colour, occasion):
+def add_clothing(image, category, subtype, colour, occasion, user_id):
     db = database_worker("dressify.db")
-    db.runsave(""" INSERT INTO clothes VALUES
-            (owner, image, category, subtype, colour, occasion)
+    db.run_save(""" INSERT INTO clothes VALUES
+            (image, category, subtype, colour, occasion, user_id)
                """)
     
 @app.route('/file/<filename>')
