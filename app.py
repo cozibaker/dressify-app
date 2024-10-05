@@ -32,3 +32,7 @@ def file(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
 
 create_database()
+
+db = create_database()
+
+cur = db.cursor()
