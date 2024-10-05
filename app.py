@@ -23,8 +23,13 @@ def create_database():
 
 def add_clothing(image, category, subtype, colour, occasion, user_id):
     db = database_worker("dressify.db")
-    db.run_save(""" INSERT INTO clothes VALUES
+    db.run_save(""" INSERT INTO clothing VALUES
             (image, category, subtype, colour, occasion, user_id)
+               """)
+    
+def remove_clothing(clothing_id):
+    db = database_worker("dressify.db")
+    db.run_save(""" DELETE FROM clothing WHERE id = clothing_id
                """)
     
 @app.route('/file/<filename>')
