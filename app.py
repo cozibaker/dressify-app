@@ -2,14 +2,14 @@ from database_functions import database_worker
 
 def create_database():
     db = database_worker("dressify.db")
-    query_user = '''CREATE table if not exists user (
+    query_user = '''CREATE TABLE if not exists user (
         id INTEGER PRIMARY KEY,
         username TEXT,
         name TEXT,
         email TEXT,
         password TEXT
     )'''
-    query_clothing = '''CREATE table if not exists clothing (
+    query_clothing = '''CREATE TABLE if not exists clothing (
         id INTEGER PRIMARY KEY,
         image VARCHAR(100),
         category TEXT,
