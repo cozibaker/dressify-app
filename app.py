@@ -59,15 +59,16 @@ def file(filename):
 app = Flask(__name__)
 
 @app.route('/file/<filename>')
-@app.route('/outfit_randomization', methods=['GET', 'POST'])
+@app.route('/randomizationPage.html', methods=['GET', 'POST'])
 
 def outfit_randomization():
 
     db = database_worker("dressify.db")
 
     userId = 1 #arbitrary value, would ideally be received from the database
-    currentOccasion = 'Formal' #arbitrary values
-    currentWeather = 20 #arbitrary values
+    if request.method == "POST":
+        currentOccasion = request.form['dropdown2.textContent'] #idea is to refer from the value of the dropdown box
+        currentWeather = request.form['dropdown1.textContent'] #idea is to refer from the value of the dropdown box
 
     random_outfit = random_outfit_generator(userId, currentOccasion, currentWeather)
     top = random_outfit["top"]
