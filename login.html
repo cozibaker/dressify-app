@@ -8,23 +8,52 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
     
+<body>
     <style>
         body {
-          background-image: url('initialPage.jpg');
-          background-repeat: no-repeat;
-          background-attachment: fixed;
-          background-size: 100% 105%;
+            background-image: url('images!/initialPage.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 105%; /* Cover the full area */
+            margin: 0; /* Remove default margin */
+            height: 100vh; /* Set body height to full viewport height */
+            position: relative; /* Set the body as the reference for absolute positioning */
         }
-        </style>
 
-    <div class="container", style="text-align: center">
+        .button-container {
+            position: absolute; /* Allow absolute positioning for the button */
+            top: 65.2%; /* Change this value to move the button vertically */
+            left: 50%; /* Change this value to move the button horizontally */
+            transform: translate(-50%, -50%); /* Center the button */
+            height: 42px;
+            width: 230px
+        }
+
+        button {
+            background-color: transparent; /* Make the button background transparent */
+            border: none; /* Remove the button border */
+            cursor: pointer; /* Change cursor on hover */
+        }
+
+        button img {
+            display: block; /* Prevents any gap below the image */
+        }
+        
+
+        
+    </style>
+
+    <div class="button-container">
         <button type="submit">
-            <img src="" padding="15px 32px" border="0"/>
-          </button>
+            <img src="images!/logInButton.jpg" width="215" height="42" border="0"/>
+        </button>
 
+        <button type="submit">
+            <img src="images!/signUpButton.jpg" width="215" height="42" border="0"/>
+        </button>
     </div>
-
 </body>
+
+</head>
 </html>
