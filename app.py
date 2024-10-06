@@ -36,14 +36,14 @@ def remove_clothing(clothing_id):
     db.run_save(""" DELETE FROM clothing WHERE id = clothing_id """)
 
 def random_outfit_generator(oc, id):
-    clothingList = {}
+    clothingDict = {}
     db = database_worker("dressify.db")
     for t in ["top", "jacket", "bottom", "shoes"]:
         c = db.cursor()
         c.execute(""" SELECT * from clothing WHERE (type = t AND occasion = oc) AND id = user_id """)
         L = c.fetchall()
-        clothingList[t] = L[random.randrange(0, len(L))]
-    return clothingList
+        clothingDict[t] = L[random.randrange(0, len(L))]
+    return clothingDict
     
 @app.route('/file/<filename>')
 def file(filename):

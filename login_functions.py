@@ -39,8 +39,8 @@ def login():
             user = db.search(f"SELECT * from dressify where username='{username}'")
             if user:
                 user = user[0] # search returns a list, so here I select one
-                id, username, email, hash = user
-                if check_password(hashed_password=hash, user_password=passwd):
+                id, username, email, stored_password = user
+                if stored_password==passwd:
                     resp = make_response(redirect(url_for('profile', username=username)))
                     resp.set_cookie('username', f"{username}")
                     return resp
