@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dressify</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+    
+<body>
+    <style>
+        body {
+            background-image: url('images!/randomizationPage.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 105%; /* Cover the full area */
+            margin: 0; /* Remove default margin */
+            height: 100vh; /* Set body height to full viewport height */
+            position: relative; /* Set the body as the reference for absolute positioning */
+            display: flex; /* Use flexbox to layout button and image container side by side */
+            justify-content: space-between; /* Space out the containers */
+        }
+
+        .button-container {
+            position: absolute; /* Allow absolute positioning for the button */
+            top: 56.8%; /* Change this value to move the button vertically */
+            left: 22.7%; /* Change this value to move the button horizontally */
+            transform: translate(-50%, -50%); /* Center the button */
+            height: 42px;
+            width: 230px;
+            margin-right: 15%;
+        }
+
+        .image-container1 {
+            position: absolute;
+            top: 1%; /* Change this value to move the button vertically */
+            left: 38.7%;
+            height: 375px;
+            width: 800px; /* Set a fixed width for the image container */
+            margin-left: 5%; /* Add space from the right */
+            display: flex;
+            flex-direction: row; /* Arrange images in a vertical column */
+            gap: 10px; /* Add space between images */
+        }
+
+        .image-container2 {
+            position: absolute;
+            top: 50%; /* Change this value to move the button vertically */
+            left: 38.7%;
+            height: 375px;
+            width: 800px; /* Set a fixed width for the image container */
+            margin-left: 5%; /* Add space from the right */
+            display: flex;
+            flex-direction: row; /* Arrange images in a vertical column */
+            gap: 10px; /* Add space between images */
+        }
+        
+
+        .image-container img {
+            width: 100%; /* Set images to take full width of container */
+            height: auto; /* Keep aspect ratio */
+            border: 2px solid #fff; /* Optional: Add a white border to the images */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Add shadow effect */
+        }
+
+        button {
+            background-color: transparent; /* Make the button background transparent */
+            border: none; /* Remove the button border */
+            cursor: pointer; /* Change cursor on hover */
+        }
+
+        button img {
+            display: block; /* Prevents any gap below the image */
+        }
+        
+
+        
+    </style>
+
+    <div class="button-container">
+        <button type="submit">
+            <img src="images!/randomizationButton.jpg" width="245" height="40" border="0"/>
+        </button>
+
+        <button type="submit">
+            <img src="images!/favOutfitButton.jpg" width="245" height="40" border="0"/>
+        </button>
+    </div>
+
+    <div class="image-container1">
+        <img src="" alt="Photo 1" width="400px" height="375px">
+        <img src="" alt="Photo 2" width="400px" height="375px">
+    </div>
+
+    <div class="image-container2">
+        <img src="" alt="Photo 3" width="400px" height="375px">
+        <img src="" alt="Photo 4" width="400px" height="375px">
+    </div>
+
+</body>
+
+</head>
+</html>
