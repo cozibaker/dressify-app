@@ -140,10 +140,10 @@
 
         document.querySelectorAll('.dropdown-content a').forEach(item => {
             item.addEventListener('click', function(e) {
-                e.preventDefault(); // Prevent default link behavior
+                e.preventDefault();
                 const dropdownButton = this.closest('.dropdown').querySelector('.dropbtn');
-                dropdownButton.textContent = this.dataset.value; // Set button text to selected item
-                this.parentElement.classList.remove('show'); // Hide dropdown
+                dropdownButton.textContent = this.dataset.value;
+                this.parentElement.classList.remove('show');
             });
         });
 
