@@ -1,11 +1,11 @@
 from urllib import request
 
 import pip
-import app
 from database_functions import database_worker
 
-from flask import Flask, render_template, request, redirect, make_response, send_from_directory, url_for
+from flask import Flask, __main__, render_template, request, redirect, make_response, send_from_directory, url_for
 
+app = Flask(__main__)
 @app.route('/login',methods=['GET', 'POST'])
 
 def signup():
