@@ -1,5 +1,7 @@
 from database_functions import database_worker
 
+import os
+import app
 import pip
 from flask import Flask, render_template, request, redirect, make_response, send_from_directory, url_for
 
