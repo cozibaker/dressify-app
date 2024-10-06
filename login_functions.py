@@ -15,7 +15,7 @@ def signup():
         email = request.form['email']
         passwd = request.form['passwd']
         db = database_worker('dressify.db')
-        new_user = """INSERT INTO dressify(username, email, password) 
+        new_user = """INSERT INTO user(username, email, password) 
                       VALUES (username, email, passwd)"""
         db.run_save(new_user)
         db.close()
@@ -36,7 +36,7 @@ def login():
         passwd = request.form['passwd']
         if len(username)>0 and len(passwd)>0:
             db = database_worker('dressify.db')
-            user = db.search(f"SELECT * from dressify where username='{username}'")
+            user = db.search(f"SELECT * from user where username='{username}'")
             if user:
                 user = user[0] # search returns a list, so here I select one
                 id, username, email, stored_password = user

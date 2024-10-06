@@ -79,24 +79,26 @@
         
     </style>
 
-    <div class="button-container">
-        <button type="submit">
-            <img src="images!/randomizationButton.jpg" width="245" height="40" border="0"/>
-        </button>
-
+    <form action="/app.py" method="GET">
+        <div class="button-container">
+            <button type="submit">
+                <img src="images!/randomizationButton.jpg" width="245" height="40" border="0"/>
+            </button>
+    </form>
+    
         <button type="submit">
             <img src="images!/favOutfitButton.jpg" width="245" height="40" border="0"/>
         </button>
     </div>
 
     <div class="image-container1">
-        <img src="" alt="Photo 1" width="400px" height="375px">
-        <img src="" alt="Photo 2" width="400px" height="375px">
+        <img src="{{ image1 }}" alt="Photo 1" width="400px" height="375px">
+        <img src="{{ image2}}" alt="Photo 2" width="400px" height="375px">
     </div>
 
     <div class="image-container2">
-        <img src="" alt="Photo 3" width="400px" height="375px">
-        <img src="" alt="Photo 4" width="400px" height="375px">
+        <img src="{{ image3 }}" alt="Photo 3" width="400px" height="375px">
+        <img src="{{ image4 }}" alt="Photo 4" width="400px" height="375px">
     </div>
 
 </body>
