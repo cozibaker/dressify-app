@@ -46,6 +46,7 @@ def random_outfit_generator(oc, id):
     
 
 app = Flask(__main__)
+
 @app.route('/file/<filename>')
 def file(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
