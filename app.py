@@ -4,6 +4,7 @@ import os
 import app
 import pip
 from flask import Flask, render_template, request, redirect, make_response, send_from_directory, url_for
+import random
 
 def create_database():
     db = database_worker("dressify.db")
@@ -26,16 +27,23 @@ def create_database():
     )
     '''
 
-def add_clothing(image, category, subtype, colour, occasion, user_id):
+def add_clothing(img, cat, st, col, oc, u_id):
     db = database_worker("dressify.db")
-    db.run_save(f""" INSERT INTO clothing VALUES
-            (image, category, subtype, colour, occasion, user_id)
-               """)
+    db.run_save(""" INSERT INTO clothing VALUES (img, cat, st, col, oc, u_id) """)
     
 def remove_clothing(clothing_id):
     db = database_worker("dressify.db")
-    db.run_save(""" DELETE FROM clothing WHERE id = clothing_id
-               """)
+    db.run_save(""" DELETE FROM clothing WHERE id = clothing_id """)
+
+def random_outfit_generator(oc, id):
+    clothingList = {}
+    db = database_worker("dressify.db")
+    for t in ["top", "jacket", "bottom", "shoes"]:
+        c = db.cursor()
+        c.execute(""" SELECT * from clothing WHERE (type = t AND occasion = oc) AND id = user_id """)
+        L = c.fetchall()
+        clothingList[t] = L[random.randrange(0, len(L))]
+    return clothingList
     
 @app.route('/file/<filename>')
 def file(filename):
