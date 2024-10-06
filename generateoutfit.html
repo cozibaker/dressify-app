@@ -68,31 +68,98 @@
         }
 
         .dropdown:hover .dropdown-content {
-            display: block;
+            background-color: #ddd;
         }
 
         .dropdown:hover .dropbtn {
             background-color: #d3d3d3 
         }
+
+        .show {
+            display: block;
+        }
+
+
+        .button-container {
+            position: absolute;
+            top: 234%;
+            left: 55%;
+            transform: translate(-50%, -50%);
+            height: 85px;
+            width: 225px
+        }
+
+        button {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        button img {
+            display: block;
+        }
     </style>
     <div class = "wrapper">
         <div class="dropdown">
-            <button class="dropbtn"> ⌄ </button>
+            <button id = "dropdown1" class="dropbtn"> v </button>
             <div class="dropdown-content">
-                <a href="#">Sunny</a>
-                <a href="#">Rainy</a>
-                <a href="#">Cloudy</a>
-                <a href="#">Snowy</a>
+                <a href="#" data-value = "Sunny">Sunny</a>
+                <a href="#" data-value = "Rainy">Rainy</a>
+                <a href="#" data-value = "Cloudy">Cloudy</a>
+                <a href="#" data-value = "Snowy">Snowy</a>
             </div>
         </div>
         <div class="dropdown">
-            <button class="dropbtn"> ⌄ </button>
+            <button id = "dropdown2" class="dropbtn"> v </button>
             <div class="dropdown-content">
-                <a href="#">Formal</a>
-                <a href="#">Casual</a>
+                <a href="#" data-value = "Formal">Formal</a>
+                <a href="#" data-value = "Casual">Casual</a>
             </div>
         </div>
+        <div class="button-container">
+            <form action = "randomizationPage.html">
+                <button type="submit">
+                    <img src="images!/generatebutton.png" width="200" height="60" border="0"/>
+                </button>
+            </form>
+        </div>
     </div>
+    <script>
+        /*
+        function ddfunc(i) {
+            dd = document.getElementById(i)
+            dd.classList.toggle("show");
+            dd.textContent = dd.classList.dataset.value;
+        }
+        */
+        document.querySelectorAll('.dropbtn').forEach(button => {
+            button.addEventListener('click', function() {
+                this.nextElementSibling.classList.toggle('show');
+            });
+        });
+
+        document.querySelectorAll('.dropdown-content a').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault(); // Prevent default link behavior
+                const dropdownButton = this.closest('.dropdown').querySelector('.dropbtn');
+                dropdownButton.textContent = this.dataset.value; // Set button text to selected item
+                this.parentElement.classList.remove('show'); // Hide dropdown
+            });
+        });
+
+        window.onclick = function(event) {
+        if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+            }
+            }
+        }
+        }
+    </script>
 </body>
 
 </head>
