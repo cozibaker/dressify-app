@@ -1,5 +1,8 @@
 from database_functions import database_worker
 
+import pip
+from flask import Flask, render_template, request, redirect, make_response, send_from_directory, url_for
+
 def create_database():
     db = database_worker("dressify.db")
     query_user = '''CREATE TABLE if not exists user (
@@ -23,7 +26,7 @@ def create_database():
 
 def add_clothing(image, category, subtype, colour, occasion, user_id):
     db = database_worker("dressify.db")
-    db.run_save(""" INSERT INTO clothing VALUES
+    db.run_save(f""" INSERT INTO clothing VALUES
             (image, category, subtype, colour, occasion, user_id)
                """)
     

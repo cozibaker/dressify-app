@@ -1,6 +1,10 @@
 from urllib import request
+
+import pip
 import app
 from database_functions import database_worker
+
+from flask import Flask, render_template, request, redirect, make_response, send_from_directory, url_for
 
 @app.route('/login',methods=['GET', 'POST'])
 
@@ -11,8 +15,8 @@ def signup():
         email = request.form['email']
         passwd = request.form['passwd']
         db = database_worker('dressify.db')
-        new_user = f"""INSERT INTO dressify(username, email, password) 
-                      VALUES ('{username}', '{email}', '{passwd}')"""
+        new_user = """INSERT INTO dressify(username, email, password) 
+                      VALUES (username, email, passwd)"""
         db.run_save(new_user)
         db.close()
 
