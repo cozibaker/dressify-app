@@ -22,6 +22,7 @@ def create_database():
         colour TEXT,
         occasion TEXT,
         user_id INTEGER,
+        suitedWeather INTEGER,
         FOREIGN KEY (user_id) REFERENCES user(id) on delete cascade
     )
     '''
@@ -34,12 +35,12 @@ def remove_clothing(clothing_id):
     db = database_worker("dressify.db")
     db.run_save(""" DELETE FROM clothing WHERE id = clothing_id """)
 
-def random_outfit_generator(oc, id):
+def random_outfit_generator(id, oc, w):
     clothingDict = {}
     db = database_worker("dressify.db")
     for t in ["top", "jacket", "bottom", "shoes"]:
         c = db.cursor()
-        c.execute(""" SELECT * from clothing WHERE (type = t AND occasion = oc) AND id = user_id """)
+        c.execute(""" SELECT * from clothing WHERE id = user_id AND (type = t AND (occasion = oc AND suitedWeather = w)) """)
         L = c.fetchall()
         clothingDict[t] = L[random.randrange(0, len(L))]
     return clothingDict
